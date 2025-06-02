@@ -2,21 +2,20 @@ package my_modules
 
 import (
 	"bufio"
-	"log"
 	"os"
 )
 
-func GetArrayFromFile(filename string) []string {
+func GetArrayFromFile(filename string) ([]string, error) {
 	var fileText []string
 
 	file, err := os.Open(filename)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	scanner := bufio.NewScanner(file)
 	if scanner.Err() != nil {
-		log.Fatal(scanner.Err())
+		return nil, scanner.Err()
 	}
 
 	for scanner.Scan() {
@@ -25,5 +24,5 @@ func GetArrayFromFile(filename string) []string {
 
 	defer file.Close()
 
-	return fileText
+	return fileText, nil
 }
