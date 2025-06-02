@@ -9,5 +9,5 @@ func main() {
 
 	*b = 13
 
-	fmt.Println(a) // 13
+	fmt.Println(a)
 }
