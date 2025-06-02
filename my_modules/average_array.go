@@ -1,6 +1,6 @@
 package my_modules
 
-func GetAverageIntArray(numbers ...int) int {
+func GetAverageIntNumbers(numbers ...int) int {
 	total := 0
 
 	for _, number := range numbers {
@@ -10,7 +10,7 @@ func GetAverageIntArray(numbers ...int) int {
 	return total / len(numbers)
 }
 
-func GetAverageFloatArray(numbers ...float64) float64 {
+func GetAverageFloatNumbers(numbers ...float64) float64 {
 	total := 0.0
 
 	for _, number := range numbers {
