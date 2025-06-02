@@ -1,13 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"Learn_golang/my_modules"
+	"fmt"
+)
 
 func main() {
-	amount := 6
-	changeNumber(&amount)
-	fmt.Println(amount) // 12
-}
+	pass := "IPsequence*351"
 
-func changeNumber(amount *int) {
-	*amount *= 2
+	checked := my_modules.CheckPassword(pass)
+
+	fmt.Println(checked)
 }
