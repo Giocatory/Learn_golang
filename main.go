@@ -3,18 +3,14 @@ package main
 import (
 	"Learn_golang/my_modules"
 	"fmt"
-	"log"
 )
 
 func main() {
-	textFromFile, err := my_modules.GetArrayFromFile("static/poem.txt")
+	stringResult, _ := my_modules.GetMax("a", "b", "c", "d", "e")
+	intResult, _ := my_modules.GetMax(1, 2, 3, 4, 5)
+	floatResult, _ := my_modules.GetMax(1.1, 2.2, 3.3, 4.4, 5.5)
 
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
-
-	for _, line := range textFromFile {
-		fmt.Println(line)
-	}
+	fmt.Println(stringResult)
+	fmt.Println(intResult)
+	fmt.Println(floatResult)
 }
