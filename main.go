@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
-	number := my_modules.GetRandomNumber(10)
+	number, err := my_modules.GetRandomNumber(10)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 	fmt.Println(number)
 }
