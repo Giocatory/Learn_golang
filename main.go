@@ -3,15 +3,20 @@ package main
 import (
 	"Learn_golang/my_modules"
 	"fmt"
-	"reflect"
+	"log"
 )
 
 func main() {
-	stringResult, _ := my_modules.GetMax("a", "b", "c", "d", "e")
-	intResult, _ := my_modules.GetMax(1, 2, 3, 4, 5)
-	floatResult, _ := my_modules.GetMax(1.1, 2.2, 3.3, 4.4, 5.5)
+	file, err := my_modules.ReadCSV("static/statistics.csv")
 
-	fmt.Println(stringResult, reflect.TypeOf(stringResult)) // e string
-	fmt.Println(intResult, reflect.TypeOf(intResult))       // 5 int
-	fmt.Println(floatResult, reflect.TypeOf(floatResult))   // 5.5 float64
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for id, data := range file {
+		fmt.Printf("ID: %s; Name: %s; Age: %s\n", id, data["name"], data["age"])
+		fmt.Println()
+	}
+
+	fmt.Println(file["1"]["name"]) // Михаил
 }
