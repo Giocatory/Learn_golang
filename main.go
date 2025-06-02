@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	pass := "IPsequence*351"
+	//pass := "IPadventures*351"
 
-	checked := my_modules.CheckPassword(pass)
+	checked := my_modules.CheckPassword(my_modules.Template)
 
 	fmt.Println(checked)
 }
