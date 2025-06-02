@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	//pass := "IPadventures*351"
+	resultInt := my_modules.GetAverageIntArray(1, 2, 3, 4, 5)
+	resultFloat := my_modules.GetAverageFloatArray(1.0, 2.0, 3.0, 4.0, 5.0)
 
-	checked := my_modules.CheckPassword(my_modules.Template)
-
-	fmt.Println(checked)
+	fmt.Println(resultInt, resultFloat)
 }
