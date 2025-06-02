@@ -6,7 +6,7 @@ import (
 )
 
 func GetArrayFromFile(filename string) ([]string, error) {
-	var fileText []string
+	fileText := make([]string, 0)
 
 	file, err := os.Open(filename)
 	if err != nil {
