@@ -1,13 +1,14 @@
 package main
 
 import (
+	"Learn_golang/my_modules"
 	"fmt"
 )
 
 func main() {
-	myArray := [...]int{1, 2, 3, 4, 5}
+	textFromFile := my_modules.GetArrayFromFile("static/poem.txt")
 
-	for index, value := range myArray {
-		fmt.Println(index, value)
+	for _, line := range textFromFile {
+		fmt.Println(line)
 	}
 }
