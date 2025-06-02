@@ -1,14 +1,12 @@
 package my_modules
 
 func CheckPassword(password string) bool {
-	// Преобразуем пароль в руны для корректной обработки
 	passRunes := []rune(password)
 
 	if len(passRunes) < 6 {
 		return false
 	}
 
-	// Флаги для проверки наличия обязательных категорий
 	hasLower := false   // Строчные буквы
 	hasUpper := false   // Заглавные буквы
 	hasDigit := false   // Цифры
@@ -30,6 +28,5 @@ func CheckPassword(password string) bool {
 		}
 	}
 
-	// Проверяем наличие всех требуемых категорий
 	return hasLower && hasUpper && hasDigit && hasSpecial
 }
