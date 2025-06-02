@@ -3,11 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	a := 5
+	amount := 6
+	changeNumber(&amount)
+	fmt.Println(amount) // 12
+}
 
-	b := &a
-
-	*b = 13
-
-	fmt.Println(a)
+func changeNumber(amount *int) {
+	*amount *= 2
 }
