@@ -2,8 +2,11 @@ package main
 
 import (
 	"Learn_golang/my_modules"
+	"bufio"
 	"fmt"
 	"log"
+	"os"
+	"strings"
 )
 
 func main() {
@@ -19,4 +22,14 @@ func main() {
 	}
 
 	fmt.Println(file["1"]["name"]) // Михаил
+
+	WindowClose()
+}
+
+func WindowClose() (string, error) {
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.Replace(input, "\n", "", -1)
+
+	return input, nil
 }
