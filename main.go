@@ -1,13 +1,11 @@
 package main
 
 import (
-	"bufio"
+	"Learn_golang/my_modules"
 	"fmt"
-	"os"
+	"log"
 	"reflect"
 	"strconv"
-	"strings"
-	"unicode"
 )
 
 func main() {
@@ -15,17 +13,13 @@ func main() {
 
 	fmt.Print("Введите строку: ")
 
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
-	input = strings.TrimSpace(input)
+	input, err := my_modules.InputString()
 
-	isDigitOnly := true
-	for _, char := range input {
-		if !unicode.IsDigit(char) {
-			isDigitOnly = false
-			break
-		}
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	isDigitOnly := my_modules.IsDigit(input)
 
 	if isDigitOnly {
 		fmt.Print("The string contains only digits: \n")
@@ -46,9 +40,11 @@ func main() {
 }
 
 func WindowClose() (string, error) {
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
-	input = strings.TrimSpace(input)
+	input, err := my_modules.InputString()
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return input, nil
 }
