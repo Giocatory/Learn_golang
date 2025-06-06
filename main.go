@@ -1,27 +1,46 @@
 package main
 
 import (
-	"Learn_golang/my_modules"
 	"bufio"
 	"fmt"
-	"log"
 	"os"
+	"reflect"
+	"strconv"
 	"strings"
+	"unicode"
 )
 
 func main() {
-	file, err := my_modules.ReadCSV("static/statistics.csv")
+	var someVar any
 
-	if err != nil {
-		log.Fatal(err)
+	fmt.Print("Введите строку: ")
+
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input)
+
+	isDigitOnly := true
+	for _, char := range input {
+		if !unicode.IsDigit(char) {
+			isDigitOnly = false
+			break
+		}
 	}
 
-	for id, data := range file {
-		fmt.Printf("ID: %s; Name: %s; Age: %s\n", id, data["name"], data["age"])
-		fmt.Println()
+	if isDigitOnly {
+		fmt.Print("The string contains only digits: \n")
+		var err error
+		someVar, err = strconv.ParseInt(input, 0, 0)
+		if err != nil {
+			fmt.Println("Error parsing integer:", err)
+			return
+		}
+		fmt.Print(someVar, " ", reflect.TypeOf(someVar))
+	} else {
+		fmt.Println("The string does not contain only digits.")
+		someVar = input
+		fmt.Print(someVar, " ", reflect.TypeOf(someVar))
 	}
-
-	fmt.Println(file["1"]["name"]) // Михаил
 
 	WindowClose()
 }
@@ -29,7 +48,7 @@ func main() {
 func WindowClose() (string, error) {
 	reader := bufio.NewReader(os.Stdin)
 	input, _ := reader.ReadString('\n')
-	input = strings.Replace(input, "\n", "", -1)
+	input = strings.TrimSpace(input)
 
 	return input, nil
 }
