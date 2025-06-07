@@ -8,7 +8,7 @@ import (
 func main() {
 	a := []string{"a", "b", "c", "d", "e", "f"}
 
-	b := make([]string, 4)
+	b := make([]string, len(a[:4]))
 
 	copy(b, a[:4])
 
