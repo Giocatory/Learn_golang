@@ -1,36 +1,31 @@
 package main
 
 import (
-	"Learn_golang/my_modules"
 	"fmt"
-	"log"
-	"slices"
+	"reflect"
 )
 
 func main() {
 	a := []string{"a", "b", "c", "d", "e", "f"}
-	b := a[:2]
-	c := a[len(a)-3:]
-	d := a[:]
 
-	fmt.Println(a)
-	fmt.Println(b)
-	fmt.Println(c)
-	fmt.Println(d)
+	b := make([]string, 4)
 
-	res := slices.Equal(a, d)
+	copy(b, a[:4])
 
-	fmt.Println(res)
+	b[0] = "abc"
 
-	WindowClose()
+	fmt.Println(a, " ", reflect.TypeOf(a))
+	fmt.Println(b, " ", reflect.TypeOf(b))
+
+	// WindowClose()
 }
 
-func WindowClose() (string, error) {
-	input, err := my_modules.InputString()
+// func WindowClose() (string, error) {
+// 	input, err := my_modules.InputString()
 
-	if err != nil {
-		log.Fatal(err)
-	}
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
 
-	return input, nil
-}
+// 	return input, nil
+// }
