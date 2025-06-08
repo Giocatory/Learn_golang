@@ -17,6 +17,8 @@ func main() {
 		pet:  "Cat",
 	}
 
+	user1.pet = "Greff"
+
 	fmt.Println(user1.name)
 	fmt.Println(user1.age)
 	fmt.Println(user1.pet)
