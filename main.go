@@ -4,24 +4,20 @@ import (
 	"fmt"
 )
 
-type employer struct {
-	firstName string
-	lastName  string
-	id        int
-}
-
 func main() {
-	firstEmployer := employer{}
-	secondEmployer := employer{
-		firstName: "Tatyana",
-		lastName:  "Derkunova",
-		id:        1,
+	someArr := []string{"one", "second", "long string"}
+
+loop:
+	for _, v := range someArr {
+		temp := len(v)
+		switch {
+		case temp > 0 && temp <= 5:
+			fmt.Println("short word")
+		case temp > 5 && temp <= 7:
+			fmt.Println("middle word")
+			break loop
+		default:
+			fmt.Println("default value")
+		}
 	}
-
-	firstEmployer.firstName = "Mikhail"
-	firstEmployer.lastName = "Derkunov"
-	firstEmployer.id = 0
-
-	fmt.Printf("First:\nid:\t%v;\nName:\t%v %v;\n", firstEmployer.id, firstEmployer.firstName, firstEmployer.lastName)
-	fmt.Printf("Second:\nid:\t%v;\nName:\t%v %v;\n", secondEmployer.id, secondEmployer.firstName, secondEmployer.lastName)
 }
