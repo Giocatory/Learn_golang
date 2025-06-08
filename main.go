@@ -2,22 +2,17 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 )
 
-func main() {
-	someArr := []string{"one", "second", "long string"}
+type msg string
 
-loop:
-	for _, v := range someArr {
-		temp := len(v)
-		switch {
-		case temp > 0 && temp <= 5:
-			fmt.Println("short word")
-		case temp > 5 && temp <= 7:
-			fmt.Println("middle word")
-			break loop
-		default:
-			fmt.Println("default value")
-		}
-	}
+func (m msg) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
+	fmt.Fprint(resp, m)
+}
+
+func main() {
+	msgHandler := msg("Hello from Web Server in Go")
+	fmt.Println("Server is listening...")
+	http.ListenAndServe("localhost:8181", msgHandler)
 }
