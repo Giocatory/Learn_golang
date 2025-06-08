@@ -4,22 +4,24 @@ import (
 	"fmt"
 )
 
-type person struct {
-	name string
-	age  int
-	pet  string
+type employer struct {
+	firstname string
+	lastname  string
+	id        int
 }
 
 func main() {
-	user1 := person{
-		name: "Mikhail",
-		age:  37,
-		pet:  "Cat",
+	firstEmployer := employer{}
+	secondEmployer := employer{
+		firstname: "Tatyana",
+		lastname:  "Derkunova",
+		id:        1,
 	}
 
-	user1.pet = "Greff"
+	firstEmployer.firstname = "Mikhail"
+	firstEmployer.lastname = "Derkunov"
+	firstEmployer.id = 0
 
-	fmt.Println(user1.name)
-	fmt.Println(user1.age)
-	fmt.Println(user1.pet)
+	fmt.Printf("First:\nid:\t%v;\nName:\t%v %v;\n", firstEmployer.id, firstEmployer.firstname, firstEmployer.lastname)
+	fmt.Printf("Second:\nid:\t%v;\nName:\t%v %v;\n", secondEmployer.id, secondEmployer.firstname, secondEmployer.lastname)
 }
