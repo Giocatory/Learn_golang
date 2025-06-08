@@ -4,24 +4,20 @@ import (
 	"fmt"
 )
 
-func main() {
-	m := map[string]int{
-		"hello": 5,
-		"world": 0,
-	}
-
-	v, ok := m["hello"]
-	fmt.Println(v, ok)
-
-	// WindowClose()
+type person struct {
+	name string
+	age  int
+	pet  string
 }
 
-// func WindowClose() (string, error) {
-// 	input, err := my_modules.InputString()
+func main() {
+	user1 := person{
+		name: "Mikhail",
+		age:  37,
+		pet:  "Cat",
+	}
 
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	return input, nil
-// }
+	fmt.Println(user1.name)
+	fmt.Println(user1.age)
+	fmt.Println(user1.pet)
+}
