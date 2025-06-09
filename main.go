@@ -1,20 +1,26 @@
 package main
 
 import (
+	"Learn_golang/my_modules"
 	"fmt"
+	"log"
+	"strconv"
 )
 
 func main() {
-	num := "five"
+	fmt.Print("Enter exam bal: ")
+	student1, _ := my_modules.InputString()
 
-	fmt.Println(num)
+	student_grade, err := strconv.Atoi(student1)
 
-	changeVal(&num)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	fmt.Println(num)
-}
+	studentResult, err := my_modules.CheckExam(student_grade)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-func changeVal(value *string) string {
-	*value = "new value"
-	return *value
+	fmt.Printf("Result grade: %q\n", studentResult)
 }
