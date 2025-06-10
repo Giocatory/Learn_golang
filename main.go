@@ -1,42 +1,30 @@
 package main
 
 import (
+	"Learn_golang/my_modules"
 	"fmt"
 )
 
-type subscriber struct {
-	name   string
-	rate   float64
-	active bool
-}
-
-func showInfo(s subscriber) {
-	fmt.Println("Подписчик:")
-	fmt.Printf("Имя: %10s\n", s.name)
-	fmt.Printf("Рейтинг: %10.2f\n", s.rate)
-	fmt.Printf("Активность: %10t\n", s.active)
-}
-
-func newSubscriber(name string, rate float64, active bool) subscriber {
-	s := subscriber{
-		name:   name,
-		rate:   rate,
-		active: active,
-	}
-	return s
-}
-
 func main() {
-	user1 := subscriber{
-		name:   "Alyona",
-		rate:   4.99,
-		active: true,
+	user1 := my_modules.Subscriber{
+		Name:   "Marsel",
+		Rate:   4.99,
+		Active: true,
+		HomeAddress: my_modules.Address{
+			Street: "ул. Марджани",
+			City:   "Казань",
+			State:  "Россия",
+		},
 	}
 
 	fmt.Print("1) ")
-	showInfo(user1)
+	my_modules.ShowSubscriberInfo(user1)
 
-	user2 := newSubscriber("Boris", 5, false)
 	fmt.Print("2) ")
-	showInfo(user2)
+	user2 := my_modules.NewSubscriber("Egor", 5, false, "ул. Карима Тинчурина, Казань, Россия")
+	my_modules.ShowSubscriberInfo(user2)
+
+	fmt.Print("3) ")
+	employer := my_modules.NewEmployee("Yura", 100000, true, "ул. Карима Тинчурина, Казань, Россия")
+	my_modules.ShowEmployeeInfo(employer)
 }
