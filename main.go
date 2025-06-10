@@ -1,24 +1,42 @@
 package main
 
 import (
-	"Learn_golang/my_modules"
 	"fmt"
 )
 
+type subscriber struct {
+	name   string
+	rate   float64
+	active bool
+}
+
+func showInfo(s subscriber) {
+	fmt.Println("Подписчик:")
+	fmt.Printf("Имя: %10s\n", s.name)
+	fmt.Printf("Рейтинг: %10.2f\n", s.rate)
+	fmt.Printf("Активность: %10t\n", s.active)
+}
+
+func newSubscriber(name string, rate float64, active bool) subscriber {
+	s := subscriber{
+		name:   name,
+		rate:   rate,
+		active: active,
+	}
+	return s
+}
+
 func main() {
-	// Map с int-ключами
-	m1 := map[int]string{1: "one", 2: "two"}
-	fmt.Println(my_modules.MapContainsKey(m1, "1")) // true, nil (строка → int)
+	user1 := subscriber{
+		name:   "Alyona",
+		rate:   4.99,
+		active: true,
+	}
 
-	// Map со string-ключами
-	m2 := map[string]int{"1": 1, "2": 2}
-	fmt.Println(my_modules.MapContainsKey(m2, 1)) // true, nil (int → строка)
+	fmt.Print("1) ")
+	showInfo(user1)
 
-	// Map с float-ключами
-	m3 := map[float64]bool{1.5: true}
-	fmt.Println(my_modules.MapContainsKey(m3, "1.5")) // true, nil (строка → float)
-
-	// Неподдерживаемый тип
-	m4 := map[bool]int{true: 1}
-	fmt.Println(my_modules.MapContainsKey(m4, "true")) // false, error
+	user2 := newSubscriber("Boris", 5, false)
+	fmt.Print("2) ")
+	showInfo(user2)
 }
