@@ -10,7 +10,7 @@ func main() {
 		Name:   "Marsel",
 		Rate:   4.99,
 		Active: true,
-		HomeAddress: my_modules.Address{
+		Address: my_modules.Address{
 			Street: "ул. Марджани",
 			City:   "Казань",
 			State:  "Россия",
@@ -30,5 +30,5 @@ func main() {
 
 	fmt.Print("4) ")
 	director := my_modules.NewEmployee("Mikhail", 10000000, true, "ул. Рублевская, Москва, Россия")
-	fmt.Printf("Директор живет в городе %s :P\n", director.HomeAddress.City)
+	fmt.Printf("Директор живет в городе %s :P\n", director.City)
 }
