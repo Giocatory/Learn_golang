@@ -3,24 +3,22 @@ package main
 import (
 	"Learn_golang/my_modules"
 	"fmt"
-	"log"
-	"strconv"
 )
 
 func main() {
-	fmt.Print("Enter exam bal: ")
-	student1, _ := my_modules.InputString()
+	// Map с int-ключами
+	m1 := map[int]string{1: "one", 2: "two"}
+	fmt.Println(my_modules.MapContainsKey(m1, "1")) // true, nil (строка → int)
 
-	student_grade, err := strconv.Atoi(student1)
+	// Map со string-ключами
+	m2 := map[string]int{"1": 1, "2": 2}
+	fmt.Println(my_modules.MapContainsKey(m2, 1)) // true, nil (int → строка)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	// Map с float-ключами
+	m3 := map[float64]bool{1.5: true}
+	fmt.Println(my_modules.MapContainsKey(m3, "1.5")) // true, nil (строка → float)
 
-	studentResult, err := my_modules.CheckExam(student_grade)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("Result grade: %q\n", studentResult)
+	// Неподдерживаемый тип
+	m4 := map[bool]int{true: 1}
+	fmt.Println(my_modules.MapContainsKey(m4, "true")) // false, error
 }
