@@ -27,4 +27,8 @@ func main() {
 	fmt.Print("3) ")
 	employer := my_modules.NewEmployee("Yura", 100000, true, "ул. Карима Тинчурина, Казань, Россия")
 	my_modules.ShowEmployeeInfo(employer)
+
+	fmt.Print("4) ")
+	director := my_modules.NewEmployee("Mikhail", 10000000, true, "ул. Рублевская, Москва, Россия")
+	fmt.Printf("Директор живет в городе %s :P\n", director.HomeAddress.City)
 }
