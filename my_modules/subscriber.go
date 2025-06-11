@@ -25,7 +25,7 @@ type Address struct {
 	State  string
 }
 
-func (s Subscriber) ShowSubscriberInfo() {
+func (s *Subscriber) ShowSubscriberInfo() {
 	fmt.Println("Подписчик:")
 	fmt.Printf("Имя: %10s\n", s.Name)
 	fmt.Printf("Рейтинг: %10.2f\n", s.Rate)
@@ -35,7 +35,7 @@ func (s Subscriber) ShowSubscriberInfo() {
 	fmt.Println("========================================================================")
 }
 
-func (s Employee) ShowEmployeeInfo() {
+func (s *Employee) ShowEmployeeInfo() {
 	fmt.Println("Сотрудник:")
 	fmt.Printf("Имя: %10s\n", s.Name)
 	fmt.Printf("Зарплата: %10.2f\n", s.Salary)
