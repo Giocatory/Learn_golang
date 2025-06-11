@@ -1,34 +1,34 @@
 package main
 
 import (
-	"Learn_golang/my_modules"
-	"fmt"
+	"log"
+	"net/http"
 )
 
-func main() {
-	user1 := my_modules.Subscriber{
-		Name:   "Marsel",
-		Rate:   4.99,
-		Active: true,
-		Address: my_modules.Address{
-			Street: "ул. Марджани",
-			City:   "Казань",
-			State:  "Россия",
-		},
+func write(writer http.ResponseWriter, message string) {
+	_, err := writer.Write([]byte(message))
+	if err != nil {
+		log.Fatal(err)
 	}
+}
 
-	fmt.Print("1) ")
-	user1.ShowSubscriberInfo()
+func indexHandler(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "Hello, Index page!")
+}
 
-	fmt.Print("2) ")
-	user2 := my_modules.NewSubscriber("Egor", 5, false, "ул. Карима Тинчурина, Казань, Россия")
-	user2.ShowSubscriberInfo()
+func aboutHandler(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "Hello, About page!")
+}
 
-	fmt.Print("3) ")
-	employer := my_modules.NewEmployee("Yura", 100000, true, "ул. Карима Тинчурина, Казань, Россия")
-	employer.ShowEmployeeInfo()
+func contactHandler(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "Hello, Contact page!")
+}
 
-	fmt.Print("4) ")
-	director := my_modules.NewEmployee("Mikhail", 10000000, true, "ул. Рублевская, Москва, Россия")
-	fmt.Printf("Директор живет в городе %s :P\n", director.City)
+func main() {
+	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/about", aboutHandler)
+	http.HandleFunc("/contact", contactHandler)
+
+	err := http.ListenAndServe(":8080", nil)
+	log.Fatal(err)
 }
