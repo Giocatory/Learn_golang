@@ -1,34 +1,40 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"text/template"
 )
 
-func write(writer http.ResponseWriter, message string) {
-	_, err := writer.Write([]byte(message))
+type Guestbook struct {
+	SignatureCount int
+}
+
+func check(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func indexHandler(writer http.ResponseWriter, request *http.Request) {
-	write(writer, "Hello, Index page!")
-}
+func viewHandler(writer http.ResponseWriter, request *http.Request) {
+	signatures := "signatures"
+	html, err := template.ParseFiles("./template/view.html")
+	check(err)
 
-func aboutHandler(writer http.ResponseWriter, request *http.Request) {
-	write(writer, "Hello, About page!")
-}
+	guestbook := Guestbook{
+		SignatureCount: len(signatures),
+	}
 
-func contactHandler(writer http.ResponseWriter, request *http.Request) {
-	write(writer, "Hello, Contact page!")
+	err = html.Execute(writer, guestbook)
+	check(err)
 }
 
 func main() {
-	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/about", aboutHandler)
-	http.HandleFunc("/contact", contactHandler)
+	http.HandleFunc("/guestbook", viewHandler)
 
-	err := http.ListenAndServe(":8080", nil)
+	fmt.Println("Server is running on port 8080")
+	err := http.ListenAndServe("localhost:8080", nil)
 	log.Fatal(err)
+
 }
