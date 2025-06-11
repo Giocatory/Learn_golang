@@ -18,15 +18,15 @@ func main() {
 	}
 
 	fmt.Print("1) ")
-	my_modules.ShowSubscriberInfo(user1)
+	user1.ShowSubscriberInfo()
 
 	fmt.Print("2) ")
 	user2 := my_modules.NewSubscriber("Egor", 5, false, "ул. Карима Тинчурина, Казань, Россия")
-	my_modules.ShowSubscriberInfo(user2)
+	user2.ShowSubscriberInfo()
 
 	fmt.Print("3) ")
 	employer := my_modules.NewEmployee("Yura", 100000, true, "ул. Карима Тинчурина, Казань, Россия")
-	my_modules.ShowEmployeeInfo(employer)
+	employer.ShowEmployeeInfo()
 
 	fmt.Print("4) ")
 	director := my_modules.NewEmployee("Mikhail", 10000000, true, "ул. Рублевская, Москва, Россия")
