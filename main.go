@@ -1,13 +1,13 @@
 package main
 
-import (
-	"Learn_golang/my_modules"
-	"fmt"
-)
+import "Learn_golang/my_modules"
 
 func main() {
-	expression := my_modules.Variables(2, 2, 2)
-	calc := expression(3)
+	const number = 5
+	someTarget := my_modules.MakePointer(number)
 
-	fmt.Println(calc)
+	*someTarget = 10
+
+	println(*someTarget)
+	println(number)
 }
