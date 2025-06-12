@@ -1,13 +1,21 @@
 package main
 
-import "Learn_golang/my_modules"
+import "fmt"
 
 func main() {
-	const number = 5
-	someTarget := my_modules.MakePointer(number)
+	arr := []int{1, 2, 3, 4, 5}
 
-	*someTarget = 10
+	var arrCopy []int
 
-	println(*someTarget)
-	println(number)
+	for _, v := range arr {
+		arrCopy = append(arrCopy, v)
+	}
+
+	fmt.Println(arrCopy)
+	fmt.Println(arr)
+
+	arrCopy[0] = 100
+
+	fmt.Println(arrCopy)
+	fmt.Println(arr)
 }
