@@ -1,21 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"Learn_golang/my_modules"
+	"fmt"
+)
 
 func main() {
-	arr := []int{1, 2, 3, 4, 5}
+	var intStack my_modules.Stack[int]
 
-	var arrCopy []int
+	intStack.Push(10)
+	intStack.Push(20)
+	intStack.Push(30)
+	v, ok := intStack.Pop()
 
-	for _, v := range arr {
-		arrCopy = append(arrCopy, v)
-	}
-
-	fmt.Println(arrCopy)
-	fmt.Println(arr)
-
-	arrCopy[0] = 100
-
-	fmt.Println(arrCopy)
-	fmt.Println(arr)
+	fmt.Println(v, ok)
+	intStack.Print()
 }
