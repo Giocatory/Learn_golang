@@ -1,12 +1,12 @@
 package main
 
 import (
-	"Learn_golang/my_modules"
+	md "Learn_golang/my_modules"
 	"fmt"
 )
 
 func main() {
-	var intStack my_modules.Stack[int]
+	var intStack md.Stack[int]
 
 	intStack.Push(10)
 	intStack.Push(20)
