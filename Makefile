@@ -9,6 +9,3 @@ vet: fmt
 
 build: vet
 	go build
-
-run: build
-	go run main.go
