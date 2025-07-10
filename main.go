@@ -1,18 +1,12 @@
 package main
 
 import (
-	md "Learn_golang/my_modules"
 	"fmt"
+	"math"
 )
 
 func main() {
-	var intStack md.Stack[int]
-
-	intStack.Push(10)
-	intStack.Push(20)
-	intStack.Push(30)
-	v, ok := intStack.Pop()
-
-	fmt.Println(v, ok)
-	intStack.Print()
+	f := 10.6
+	n := int(math.Round(f))
+	fmt.Println(n)
 }
