@@ -24,7 +24,6 @@ func (s *Stack[T]) Print() {
 	fmt.Println(s.vals)
 }
 
-
 // Перепроверка
 // package main
 
