@@ -1,12 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
 func main() {
-	f := 10.6
-	n := int(math.Round(f))
-	fmt.Println(n)
+	x := 10
+	if x > 5 {
+		fmt.Println(x)
+		x := 5
+		fmt.Println(x)
+	}
+	fmt.Println(x)
 }
