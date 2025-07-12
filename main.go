@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	name := "Михаил"
-	var firstLatter rune = []rune(name)[0]
-	fmt.Println(string(firstLatter))
+	var n int
+	fmt.Scan(&n)
+
+	if n%2 == 0 {
+		fmt.Println("Число четное")
+	} else {
+		fmt.Println("Число нечетное")
+	}
 }
